@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>[UT專題] HPE Product Bulletin Alletra MP B10000 查規格小遊戲</title>
+<title>[UT專題]HPE Product Bulletin-Alletra MP B10000查規格小遊戲</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -164,12 +164,12 @@
     <p class="intro-sub">每次測驗從題庫隨機抽取 20 題，題目順序與選項順序皆會重新排列，確保每次作答體驗不同。</p>
 
     <div class="pool-badge">
-      題庫共 <b id="pool-count">35</b> 題　每次隨機抽 <b>20</b> 題
+      題庫共 <b id="pool-count">60</b> 題　每次隨機抽 <b>20</b> 題
     </div>
 
     <div class="stat-row">
       <div class="stat-c"><div class="stat-n">20</div><div class="stat-l">每次題數</div></div>
-      <div class="stat-c"><div class="stat-n">9</div><div class="stat-l">主題分類</div></div>
+      <div class="stat-c"><div class="stat-n">60</div><div class="stat-l">題庫總數</div></div>
       <div class="stat-c"><div class="stat-n">隨機</div><div class="stat-l">每次不同</div></div>
     </div>
 
@@ -272,67 +272,69 @@ const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwYaF75dYikWARZuN5Iv
 // ═══════════════════════════════════════════════
 
 // ───────────────────────────────────────────────
-//  題庫（35 題）— 可持續新增，格式不變
+//  題庫（60 題）— HPE Alletra Storage MP B10000 專用
 // ───────────────────────────────────────────────
 const QUESTION_BANK = [
-
-  // ── 平台規格 ──
-  { cat:"平台規格", q:"HPE Alletra Storage MP B10000 的基本 Chassis Form Factor 為何？", opts:["1U Rack","2U Rack","4U Rack","Half-Width Blade"], ans:1, explain:"HPE Alletra Storage MP 10000 Chassis 為標準 2U Rack 機架式設計，Switchless 配置下可在此 2U 空間內放置 2 個 Controller Nodes 及最多 24 顆 NVMe SFF 硬碟。" },
-  { cat:"平台規格", q:"HPE Alletra Storage MP B10000 前身的產品名稱為何？", opts:["HPE Primera 650","HPE 3PAR StoreServ 9000","HPE GreenLake for Block Storage built on HPE Alletra Storage MP","HPE MSA 2062 Storage"], ans:2, explain:"B10000 已更名，前身為「HPE GreenLake for Block Storage built on HPE Alletra Storage MP」，品牌整合後統一稱為 HPE Alletra Storage MP B10000。" },
-  { cat:"平台規格", q:"HPE Alletra Storage MP B10000 支援哪兩種主要儲存服務類型？", opts:["Block + Object","Block + File","Object + File","Block + Tape"], ans:1, explain:"B10000 是業界首款 Disaggregated Scale-out 統一 Block + File 儲存平台，可在同一硬體上同時服務 Block（SAN）及 File（NAS）工作負載。" },
-  { cat:"平台規格", q:"B10000 已取得哪項電信級環境認證？", opts:["FCC Class B","MIL-STD-810G","NEBS Level 3","DO-160G"], ans:2, explain:"HPE Alletra Storage MP B10000（含 B10100 與 B10200 機型）均已通過 NEBS Level 3 認證，適合部署於電信機房環境。" },
-
-  // ── 架構設計 ──
-  { cat:"架構設計", q:"B10000 的核心架構特色為何？", opts:["集中式單控制器 Active-Passive","Disaggregated（解耦）Scale-out Block + File 統一儲存","傳統 RAID-only SAN","Object Storage Only 架構"], ans:1, explain:"B10000 採用業界首創 Disaggregated（效能與容量分離擴充）Scale-out 架構，支援 All-Active 多節點設計，可獨立擴充效能（Controller Nodes）或容量（JBOF 擴充架）。" },
-  { cat:"架構設計", q:"HPE Alletra Storage MP B10000 採用哪種處理器架構？", opts:["Intel Xeon Scalable","ARM Cortex-A78","AMD EPYC 嵌入式處理器","Intel Atom C3000 系列"], ans:2, explain:"B10000 基於 HPE Alletra Storage MP 硬體平台，採用 AMD EPYC 嵌入式處理器，並整合 AMD Security Processor，提供硬體層級安全功能。" },
-  { cat:"架構設計", q:"B10000 的儲存作業系統名稱為何？", opts:["HPE OneOS","HPE Alletra Storage ArcusOS","HPE Nimble OS","HPE 3PAR OS 3.3.x"], ans:1, explain:"B10000 執行 HPE Alletra Storage ArcusOS，每個 Controller Node 各自執行獨立實例，提供軟體層級的容錯能力，大幅降低非計劃性停機風險。" },
-  { cat:"架構設計", q:"B10100（Switchless）與 B10200（Switched）最主要的擴充差異為何？", opts:["控制器核心數不同","B10100 最多 1.1 PB（2 個擴充架）；B10200 最多 5.8 PB（16 個擴充架）","B10200 不支援 NVMe/FC 連接","B10100 無法支援 Fibre Channel HBA"], ans:1, explain:"B10100 Switchless 最多連接 2 個 JBOF 擴充架，總容量約 1.1 PB；B10200 Switched 最多連接 16 個 JBOF 擴充架，總容量可達約 5.8 PB。" },
-  { cat:"架構設計", q:"B10000 採用 All-Active 多節點架構的主要優勢為何？", opts:["僅作為冗餘備援，正常只有主節點處理 I/O","所有節點同時處理 I/O，達到效能線性擴充與資料高可用性","僅主節點處理讀取，備用節點處理寫入","節點間以 RAID 方式共享資料"], ans:1, explain:"All-Active 架構代表所有 Controller Node 同時參與 I/O 處理，結合 PCIe 4.0 NVMe 媒體，實現預測性效能與超低延遲，並支援效能線性擴充。" },
-
-  // ── 控制器節點 ──
-  { cat:"控制器節點", q:"B10120 Controller Node 的 CPU 核心數為何？", opts:["4-core","8-core","16-core","32-core"], ans:1, explain:"B10120 為 8-core Controller Node，每節點快取 256 GB，最多支援 8 個 Host Ports（4 個 HBA 槽），是 B10100 系列入門機型。" },
-  { cat:"控制器節點", q:"B10130 Controller Node 的 CPU 核心數及每節點快取為何？", opts:["8-core，128 GB","16-core，256 GB","32-core，512 GB","16-core，512 GB"], ans:1, explain:"B10130 為 16-core Controller Node，每節點快取 256 GB，最多支援 12 個 Host Ports（4 個 HBA 槽），適合中高效能混合工作負載。" },
-  { cat:"控制器節點", q:"B10140 四節點（4N）配置的每節點快取容量為何？", opts:["128 GB","256 GB","512 GB","1 TB"], ans:2, explain:"B10140 4N 為 4U（2×2U）配置、32-core per Node、每節點 512 GB 快取，最多 4 個節點；每節點最多 8 個 Host Ports，最多支援 1 個 JBOF 擴充架。" },
-  { cat:"控制器節點", q:"B10130 與 B10140（2N）Controller Node 每節點最多支援幾個 Host Ports？", opts:["4 ports","8 ports","12 ports","16 ports"], ans:2, explain:"B10130 及 B10140（2N Switchless）每節點最多提供 12 個 Host Ports（4 個 HBA 插槽），高於 B10120 的 8 ports，適合需要更多主機連線的環境。" },
-  { cat:"控制器節點", q:"HPE Alletra Storage MP 10000 2U Chassis 的料號為何？", opts:["S0B84A","R7C75A","S1R06A","S0U32A"], ans:1, explain:"R7C75A 為標準 HPE Alletra Storage MP 10000 2U Chassis；TAA 合規版本為 S0U32A。每個 Switchless 配置必須訂購一個 Chassis，且 Chassis 不含 Controller Node 或電源供應器。" },
-
-  // ── 料號識別 ──
-  { cat:"料號識別", q:"HPE Alletra Storage MP B10100 Base Configuration 的料號為何？", opts:["R7C75A","S1R06A","S0B84A","S0U32A"], ans:2, explain:"S0B84A 為 B10100（Switchless）Base Configuration 料號；S1R06A 為 B10200（Switched）Base Configuration 料號。每個配置必須選擇其中一個。" },
-  { cat:"料號識別", q:"HPE Alletra Storage MP B10200 Base Configuration 的料號為何？", opts:["S0B84A","S0U32A","R7C75A","S1R06A"], ans:3, explain:"S1R06A 為 B10200（Switched）Base Configuration 料號，適用於需要連接 NVMe Fabric Switch 以實現大規模擴充的部署。S0B84A 則是 B10100 Switchless 版本。" },
-  { cat:"料號識別", q:"HPE Alletra Storage MP 10000 TAA 合規 2U Chassis 的料號為何？", opts:["R7C75A","S0B84A","S0U32A","S1R06A"], ans:2, explain:"S0U32A 為 TAA（Trade Agreements Act）合規版 HPE Alletra Storage MP 10000 2U Chassis，適用於美國聯邦政府採購需求；R7C75A 為標準版本。" },
-  { cat:"料號識別", q:"B10130 搭配 JBOF 使用時，每個節點需訂購哪個 100GbE HBA 料號？", opts:["R9F77A","S2A68A","R8M59A","S0B84A"], ans:1, explain:"B10130 連接 JBOF 擴充架時，每個節點需訂購 1 個 S2A68A（100GbE HBA），並配套 2 條 R9F77A 線材。B10140 100Gb 版本還需額外加購 R8M59A。" },
-
-  // ── 儲存與硬碟 ──
-  { cat:"儲存與硬碟", q:"B10000 使用何種硬碟介面？", opts:["SAS 12G","SATA 6G","NVMe SFF（全 NVMe 架構）","SAS + SATA Tri-Mode"], ans:2, explain:"B10000 採用全 NVMe SFF 架構，所有硬碟均為 NVMe 介面並支援加密（SED），透過 PCIe 4.0（48 Lanes per Enclosure）連接，提供極低延遲與高頻寬。" },
-  { cat:"儲存與硬碟", q:"B10000 TLC NAND NVMe SSD 的可用容量選項為何？", opts:["1.92 / 3.84 / 7.68 / 15.36 / 30.72 TB","1.92 / 3.84 / 7.68 / 15.36 / 61.44 TB","960 GB / 1.92 / 3.84 / 7.68 / 15.36 TB","3.84 / 7.68 / 15.36 / 30.72 / 61.44 TB"], ans:0, explain:"TLC NAND NVMe SFF SSD 提供 1.92 TB、3.84 TB、7.68 TB、15.36 TB、30.72 TB 五種容量選項，全部支援加密（SED）。另有 QLC NAND 版本（15.36 TB / 30.72 TB）提供更高密度選擇。" },
-  { cat:"儲存與硬碟", q:"B10000 QLC NAND NVMe SSD 的可用容量選項為何？", opts:["7.68 TB 與 15.36 TB","15.36 TB 與 30.72 TB","30.72 TB 與 61.44 TB","3.84 TB 與 7.68 TB"], ans:1, explain:"QLC NAND NVMe SSD 提供 15.36 TB 與 30.72 TB 兩種大容量選項，適合容量密集型工作負載（如備份目標、大數據分析），成本效益優於 TLC 版本。" },
-  { cat:"儲存與硬碟", q:"每個 B10000 Switchless 機箱最多可安裝幾顆 NVMe SFF 硬碟？", opts:["12 顆","16 顆","24 顆","48 顆"], ans:2, explain:"HPE Alletra Storage MP 10000 Switchless 2U Chassis 最多可裝 24 顆 NVMe SFF 硬碟，透過 48 條 PCIe 4.0 Lanes（每顆硬碟 2 Lanes）連接，支援雙埠冗餘存取。" },
-  { cat:"儲存與硬碟", q:"B10130（Switchless，含 2 個 JBOF）的最大 NVMe 硬碟總數為幾顆？", opts:["24 顆","48 顆","72 顆","96 顆"], ans:2, explain:"B10130 最多支援 3 個機箱（1 個 Controller Chassis + 2 個 JBOF），每個機箱 24 顆 NVMe，合計 72 顆硬碟。Controller Node 透過 100 Gb NVMe-oF 鏈路連接 JBOF 擴充架。" },
-  { cat:"儲存與硬碟", q:"B10100 Switchless 解決方案的最大 Raw Capacity 約為多少？", opts:["500 TB","1.1 PB","5.8 PB","10 PB"], ans:1, explain:"B10100 Switchless 最大 Raw Capacity 約為 1.1 PB；B10200 Switched（最多 16 個 JBOF 擴充架）最大 Raw Capacity 則可達約 5.8 PB。" },
-  { cat:"儲存與硬碟", q:"B10200 Switched 解決方案的最大 Raw Capacity 約為多少？", opts:["1.1 PB","3.2 PB","5.8 PB","10 PB"], ans:2, explain:"B10200 Switched 最多支援 16 個 JBOF 擴充架，最大 Raw Capacity 約為 5.8 PB，起始容量最小為 15.36 TB，可無中斷逐步擴充至最大規模。" },
-
-  // ── 網路連接 ──
-  { cat:"網路連接", q:"B10000 支援哪些 Fibre Channel 速率？", opts:["16 Gb 與 32 Gb FC","32 Gb 與 64 Gb FC","8 Gb 與 16 Gb FC","64 Gb 與 128 Gb FC"], ans:1, explain:"B10000 HBA 支援 32 Gb 與 64 Gb Fibre Channel，同時支援 SCSI 協定（傳統 FC SAN）及 NVMe/FC 協定（高效能 NVMe over FC）。" },
-  { cat:"網路連接", q:"B10000 的 Ethernet HBA（10/25 GbE）支援哪些儲存協定？", opts:["iSCSI / NFS / NVMe/TCP","FCoE / iSCSI only","NVMe/TCP / NVMe/RoCE only","iSCSI only"], ans:0, explain:"B10000 Ethernet HBA（10/25 GbE）支援 iSCSI（Block over IP）、NFS（File/NAS）、NVMe/TCP（高效能 NVMe over Ethernet）三種協定，實現多協定統一儲存。" },
-  { cat:"網路連接", q:"B10000 FC HBA 支援哪種高效能 NVMe over Fibre Channel 協定？", opts:["NVMe/RoCE","NVMe/TCP","NVMe/FC","NVMe/InfiniBand"], ans:2, explain:"B10000 Fibre Channel HBA 支援 NVMe/FC 協定（NVMe over Fibre Channel），讓現有 FC 基礎架構用戶可在不更換網路設備的情況下享受 NVMe 的低延遲效能。" },
-
-  // ── 管理與雲端 ──
-  { cat:"管理與雲端", q:"B10000 的雲端管理平台名稱為何？", opts:["HPE OneView","HPE iLO 7","HPE GreenLake（HPE Data Services Cloud Console）","HPE Insight Control"], ans:2, explain:"B10000 透過 HPE GreenLake Cloud 的 HPE Data Services Cloud Console 進行雲端原生管理，提供 AI 驅動的 AIOps、自動化佈建、效能優化，以及跨 On-Prem 和公有雲的統一可見性。" },
-  { cat:"管理與雲端", q:"HPE AIOps for Storage（B10000）的主要功能為何？", opts:["僅提供儲存容量報表","預測並在問題發生前主動防止中斷，並提供 AI 驅動建議","僅支援手動效能調整","需要額外授權才可使用 AI 功能"], ans:1, explain:"HPE AIOps 透過 AI 模型分析儲存與 VM 層間的異常，在問題發生前主動告警並提供修復建議，可自動化支援升級，並提供直達專家的快速管道，大幅減少 MTTR。" },
-  { cat:"管理與雲端", q:"HPE Storage Future-Ready Program 的核心承諾為何？", opts:["免費升級至新機型（需停機搬遷資料）","免費非中斷式 Controller 更新，節省約 30% TCO","提供 5 年免費硬體保固","免費加倍儲存原始容量"], ans:1, explain:"HPE Storage Future-Ready Program（原 Timeless Storage Program）提供免費的 Non-Disruptive Controller Refresh，讓客戶持續保有最新技術而無需 Forklift Upgrade，可節省傳統升級成本約 30%。" },
-  { cat:"管理與雲端", q:"B10100 Switchless 機型是否支援客戶自行安裝（Self-Installation）？", opts:["不支援，必須由 HPE Service 安裝","支援，可於 OCA 配置工具中選取","僅 Partner 可自行安裝","僅 B10200 Switched 支援自行安裝"], ans:1, explain:"B10100 Switchless 支援客戶/夥伴自行安裝，可在 OCA 配置工具中選擇後移除 Storage Installation and Startup Service 費用；B10200 Switched 則不支援自行安裝，必須由 HPE 服務人員部署。" },
-
-  // ── 安全性 ──
-  { cat:"安全性", q:"B10000 AMD EPYC 處理器提供哪些硬體安全功能？", opts:["TPM 2.0 韌體驗證","Secure Encrypted Virtualization (SEV) 與 Secure Memory Encryption (SME)","Intel TXT 信任技術","HPE Silicon Root of Trust"], ans:1, explain:"AMD EPYC 內建獨立的 AMD Security Processor，提供 SEV（安全加密虛擬化）與 SME（安全記憶體加密），保護儲存環境中的資料主權，防止未授權的 Hypervisor 或記憶體存取。" },
-  { cat:"安全性", q:"B10000 的勒索軟體防護遵循哪個資安框架？", opts:["ISO 27001","NIST Cyber Resilience Framework","PCI DSS","HIPAA Security Rule"], ans:1, explain:"B10000 整合了即時勒索軟體偵測，並依循 NIST Cyber Resilience Framework 設計完整防禦工作流程；搭配 HPE Zerto Software 可提供 VM 層級的內嵌式偵測與快速復原（雙層防護）。" },
-  { cat:"安全性", q:"B10000 所有 NVMe SSD 提供哪種加密功能？", opts:["無加密功能","軟體加密（需消耗 CPU 資源）","Self-Encrypting Drive (SED) 硬體加密","TPM 晶片加密"], ans:2, explain:"B10000 所有 NVMe SFF SSD 均為 Self-Encrypting Drive（SED），採硬體加密方式保護靜態資料，不消耗 CPU 資源，符合資料安全法規要求。" },
-
-  // ── 保固服務 ──
-  { cat:"保固服務", q:"HPE Alletra Storage MP B10000 的標準硬體保固期限為何？", opts:["3 年零件 / 工時 / 到府","1 年零件（Parts Only）","5 年零件 / 電話支援","無保固（需另購 Care Pack）"], ans:1, explain:"B10000 標準保固為 1 年 Parts Only（僅零件）；SSD 保固亦為 1 年，提供無條件更換（含磨損或故障）。軟體媒體則享有 90 天實體瑕疵保固。" },
-  { cat:"保固服務", q:"HPE StoreMore Guarantee 對 B10000 的資料縮減比最低保證為何？", opts:["至少 2:1","至少 3:1","至少 4:1","至少 6:1"], ans:2, explain:"HPE StoreMore Guarantee 保證 B10000 工作負載可達至少 4:1 的整體節省（含資料去重、壓縮），降低實體儲存成本、節省能耗並縮小資料中心佔地面積。" },
-  { cat:"保固服務", q:"B10000 的「30 天滿意保證」主要意涵為何？", opts:["30 天後才開始計費","客戶可試用 30 天，若不滿意 HPE 將協助補救","30 天內免費升級控制器節點","30 天後提供系統效能 SLA 保證"], ans:1, explain:"30-Day Satisfaction Guarantee 讓客戶可在 30 天內試用 B10000，如對產品規格說明中的功能和效益不完全滿意，HPE 將協助解決問題，為客戶降低導入風險。" },
-  { cat:"保固服務", q:"B10000 提供哪項資料可用性最高承諾？", opts:["99.9999% Uptime SLA（需另付費）","HPE 100% Data Availability Guarantee（出廠即附）","需購買 HPE Complete Care 才可獲得","需搭配 HPE Zerto 才有效"], ans:1, explain:"每套 HPE Alletra Storage MP B10000 出廠即附 HPE 100% Data Availability Guarantee，這是 HPE 對儲存可用性的最高承諾，並搭配儲存效率、資安韌性、零停機、能耗效率等 SLA 保障。" },
-
+  { cat:"架構與設計", q:"HPE Alletra Storage MP B10000 採用何種核心架構設計？", opts:["傳統單一架構(Monolithic)","運算與儲存分離架構(Disaggregated)","超融合架構(Hyperconverged Infrastructure, HCI)","僅支援檔案儲存(File-only)"], ans:1, explain:"Alletra MP B10000 採用運算與儲存分離架構(Disaggregated)，讓效能與容量能夠獨立且無中斷地擴充。" },
+  { cat:"可用性", q:"HPE 提供 Alletra Storage MP B10000 何種等級的資料可用性保證？", opts:["99.9% (三個九)","99.999% (五個九)","99.9999% (六個九)","100% 資料可用性保證"], ans:3, explain:"針對任務關鍵型(Mission-critical)應用，HPE 提供 100% 資料可用性保證(100% data availability guarantee)，確保業務連續性。" },
+  { cat:"儲存容量", q:"Alletra Storage MP B10000 機箱(Enclosure)最少需要配置幾顆固態硬碟(Solid State Drive, SSD)？", opts:["2 顆","4 顆","8 顆","12 顆"], ans:2, explain:"每個機箱支援 8 到 24 顆 SSD，並允許以 2 顆硬碟為單位進行精細擴充。" },
+  { cat:"擴充性", q:"Alletra Storage MP B10000 硬碟擴充的最小單位為何？", opts:["1 顆硬碟","2 顆硬碟","4 顆硬碟","8 顆硬碟"], ans:1, explain:"系統支援以 2 顆硬碟(2-drive increments)為單位進行擴充，讓客戶能精細調整容量，節省成本。" },
+  { cat:"擴充性", q:"擴充儲存櫃(Just a Bunch Of Flash, JBOF)的最小擴充單位為何？", opts:["1 個 JBOF","2 個 JBOF","4 個 JBOF","需與 Controller Node 同步購買"], ans:0, explain:"JBOF 的擴充單位為 1 個，客戶可依需求獨立增加儲存空間而無須購買運算節點。" },
+  { cat:"擴充性", q:"控制器節點(Controller Node)的最小擴充單位為何？", opts:["1 個節點","2 個節點","與 JBOF 綁定","不可擴充"], ans:0, explain:"運算與儲存分離架構允許客戶以 1 個節點(increments of one)為單位升級控制器節點，單獨提升效能。" },
+  { cat:"產品系列", q:"Alletra Storage MP B10100 系列的網路架構屬於哪一種？", opts:["Switched (有交換器)","Switchless (無交換器)","Direct Connect (直連)","Fibre Channel 專用"], ans:1, explain:"B10100 屬於無交換器(Switchless)系列，預設為 2 節點配置，適合不需要大規模節點擴展的環境。" },
+  { cat:"產品系列", q:"Alletra Storage MP B10200 系列的網路架構屬於哪一種？", opts:["Switched (有交換器)","Switchless (無交換器)","Direct Connect (直連)","iSCSI 專用"], ans:0, explain:"B10200 屬於 Switched 系列，透過專屬後端交換器連接，可支援 2 到 4 個控制器節點。" },
+  { cat:"節點配置", q:"B10200 (Switched) 系列支援的控制器節點(Controller Node)數量為何？", opts:["僅限 2 個","2 個或 4 個","2 個、3 個或 4 個","最多 8 個"], ans:2, explain:"B10200 支援 2-Node、3-Node 與 4-Node 的控制器配置，提供高度的效能擴充彈性。" },
+  { cat:"節點配置", q:"B10100 (Switchless) 系列支援的控制器節點(Controller Node)數量為何？", opts:["1 個","2 個","2 個或 4 個","2 到 8 個"], ans:1, explain:"B10100 為無交換器架構，固定提供 2 個控制器節點(2-Node)，無法擴充至 3 或 4 個節點。" },
+  { cat:"機箱規格", q:"Alletra Storage MP B10000 Base Chassis (基礎機箱)的高度為多少 U？", opts:["1U","2U","4U","8U"], ans:1, explain:"Base Chassis 與 Expansion Shelf (JBOF) 的機架高度皆為標準 2U。" },
+  { cat:"機箱規格", q:"Alletra Storage MP B10000 擴充櫃 (JBOF) 的高度為多少 U？", opts:["1U","2U","4U","8U"], ans:1, explain:"Expansion Shelf (JBOF) 的機架高度與 Base Chassis 相同，皆為 2U 設計。" },
+  { cat:"硬碟規格", q:"每個 2U 機箱(包含 Base Chassis 與 JBOF)最多可容納幾顆 SSD 硬碟？", opts:["12 顆","16 顆","24 顆","36 顆"], ans:2, explain:"不論是 Base Chassis 或 JBOF，每個 2U 機箱前方最多皆可安裝 24 顆 NVMe SSD 硬碟。" },
+  { cat:"擴充性", q:"B10100 (Switchless) 系列最多可連接幾個擴充櫃(JBOF)？", opts:["1 個","2 個","4 個","16 個"], ans:1, explain:"B10100 最多支援擴充 2 個 JBOF，整個系統總共可達 3 個機箱(1 個 Base 加上 2 個 JBOF)。" },
+  { cat:"擴充性", q:"B10200 (Switched) 系列最多可連接幾個擴充櫃(JBOF)？", opts:["4 個","8 個","12 個","16 個"], ans:3, explain:"透過 Switched 架構，B10200 最大規模可擴充至 16 個 JBOF 儲存櫃，支援海量資料需求。" },
+  { cat:"處理器核心", q:"Alletra Storage MP B10000 控制器節點(Controller Node)提供哪些 CPU 核心數選項？", opts:["4-core、8-core、16-core","8-core、16-core、32-core","16-core、32-core、64-core","12-core、24-core、48-core"], ans:1, explain:"控制器節點提供 8-core、16-core 以及 32-core 三種配置，讓客戶依據效能需求選擇。" },
+  { cat:"快取記憶體", q:"配備 32-core 的控制器節點(Controller Node)，其單節點快取記憶體容量為何？", opts:["128 GB","256 GB","512 GB","1024 GB"], ans:2, explain:"32-core 高階節點配置 512 GB 的快取記憶體，能夠加速大量 I/O 請求的處理。" },
+  { cat:"快取記憶體", q:"配備 16-core 的控制器節點(Controller Node)，其單節點快取記憶體容量為何？", opts:["64 GB","128 GB","256 GB","512 GB"], ans:2, explain:"16-core 節點標準配置 256 GB 的快取記憶體(Cache Memory per Node)。" },
+  { cat:"主機介面", q:"Alletra Storage MP B10000 支援的光纖通道(Fibre Channel)最高速率為何？", opts:["8 Gb/s","16 Gb/s","32 Gb/s","64 Gb/s"], ans:2, explain:"系統支援高達 32 Gb/s 的 Fibre Channel 主機介面，適合高速儲存網路連線。" },
+  { cat:"主機介面", q:"Alletra Storage MP B10000 支援的 iSCSI 網路速率為何？", opts:["僅支援 1 GbE","支援 10/25 GbE","僅支援 40 GbE","支援 100 GbE iSCSI"], ans:1, explain:"系統支援 10/25 GbE iSCSI 主機連接介面，相容於主流乙太網路(Ethernet)基礎架構。" },
+  { cat:"主機介面", q:"在 B10130 或 B10140 (16/32-core Switchless) 中，單一節點最多可配置幾個 Fibre Channel 連接埠？", opts:["4 個","8 個","12 個","16 個"], ans:2, explain:"B10130 與 B10140 單節點最高可提供 12 個 Fibre Channel 連接埠，具備極高的連接密度。" },
+  { cat:"主機介面", q:"B10200 (Switched) 系列單一節點最多可配置幾個 Fibre Channel 連接埠？", opts:["4 個","8 個","12 個","16 個"], ans:1, explain:"B10200 Switched 節點的部分插槽需保留給後端擴充使用，因此前端 Fibre Channel 最多支援 8 個連接埠。" },
+  { cat:"主機介面", q:"單一控制器節點(Controller Node)最多可配置幾個 iSCSI 連接埠？", opts:["2 個","4 個","8 個","12 個"], ans:1, explain:"根據規格說明，單一節點最高提供 4 個 iSCSI 主機連接埠(0-4 ports)。" },
+  { cat:"硬碟規格", q:"Alletra Storage MP B10000 系統支援哪一種介面的 SSD？", opts:["SATA SSD","SAS SSD","NVMe SFF SSD","M.2 SSD"], ans:2, explain:"為確保極致效能，B10000 系統全面採用全快閃(All-Flash) NVMe SFF (2.5 吋) 介面 SSD。" },
+  { cat:"硬碟規格", q:"除了標準的 TLC SSD 外，Alletra Storage MP B10000 是否支援 QLC SSD？", opts:["不支援","是，最大支援到 15.36 TB","是，提供 15.36 TB 與 30.72 TB 兩種選項","是，僅供備份存檔使用，不可作為主要儲存"], ans:2, explain:"系統支援 QLC SSD，提供 15.36 TB 與 30.72 TB 容量，適合讀取密集型工作負載並降低單位 TB 成本。" },
+  { cat:"硬碟規格", q:"針對寫入密集型需求，系統提供的 TLC NVMe SSD 容量選項不包含下列何者？", opts:["1.92 TB","3.84 TB","10 TB","15.36 TB"], ans:2, explain:"標準 NVMe SSD 容量提供 1.92 TB、3.84 TB、7.68 TB 與 15.36 TB，並無 10 TB 規格。" },
+  { cat:"資料縮減", q:"HPE 官方在計算「有效容量」(Effective Capacity) 時，通常假設的資料縮減比為何？", opts:["2:1","4:1","6:1","8:1"], ans:1, explain:"有效容量通常以 4:1 的資料縮減比來計算，此比例綜合考量了精簡配置、重複資料刪除與壓縮等技術。" },
+  { cat:"資料保護", q:"Alletra Storage MP B10000 在計算有效容量時，預設假設採用哪一種磁碟保護架構？", opts:["RAID 10","RAID 5 (10+1)","RAID 6 (10+2)","RAID 50"], ans:2, explain:"官方規格說明中，有效容量計算基於 RAID 6 (10+2) 的保護配置，提供兼具空間利用率與安全性的架構。" },
+  { cat:"資料保護", q:"Alletra Storage MP B10000 提供何種內建安全機制來對抗網路攻擊？", opts:["內建實體硬體防火牆","即時勒索軟體威脅偵測 (Real-time ransomware threat detection)","只能透過磁帶備份防護","自動阻斷所有外部 IP 連線"], ans:1, explain:"平台將網路韌性技術整合至架構中，提供即時勒索軟體威脅偵測功能，強化威脅隔離與快速復原能力。" },
+  { cat:"管理控制", q:"Alletra Storage MP B10000 的主要管理平台為何？", opts:["HPE OneView","Data Services Cloud Console (DSCC) on HPE GreenLake","iLO Web Interface","VMware vCenter 專屬外掛"], ans:1, explain:"此系統透過 HPE GreenLake 平台上的 Data Services Cloud Console (DSCC) 提供直覺、雲端化的集中管理體驗。" },
+  { cat:"智慧管理", q:"系統搭載何種技術來提供基礎架構的智慧效能分析與問題預測？", opts:["智慧維運(Artificial Intelligence for IT Operations, AIOps)","HPE OneView Analytics","VMware vRealize","Microsoft System Center"], ans:0, explain:"系統由業界領先的基礎架構 AIOps 技術驅動，透過 DSCC 提供端到端的效能分析與問題預測。" },
+  { cat:"支援能力", q:"Alletra Storage MP B10000 的「MP」主要代表什麼意義？", opts:["Massive Power","Multi-Protocol (多協定支援)","Main Processor","Multi-Pathing"], ans:1, explain:"MP 代表 Multi-Protocol，表示單一硬體架構能同時支援區塊(Block)與檔案(File)工作負載，消除資料孤島。" },
+  { cat:"系統部署", q:"Alletra Storage MP B10000 強調能節省大量營運時間，官方宣稱最高可節省多少比例？", opts:["50%","80%","90%","99%"], ans:3, explain:"透過意圖導向(Intent-based)的智能自助配置，HPE 宣稱能減少 99% 的營運時間，將重點從基礎架構轉向應用程式。" },
+  { cat:"無中斷升級", q:"HPE Timeless 方案(Timeless controller refresh program) 的主要優勢為何？", opts:["提供免費的硬碟擴充","實現無中斷控制器升級，消除堆高機式整體汰換(Forklift upgrades)","延長硬體保固至 10 年","提供無限的雲端備份空間"], ans:1, explain:"HPE Timeless 計畫允許客戶無中斷地升級控制器技術，無需停機或大規模替換硬體設備，降低整體擁有成本(TCO)。" },
+  { cat:"相容性", q:"下列何者不是 Alletra Storage MP B10000 相容的作業系統或虛擬化平台？", opts:["Microsoft Windows Server / Hyper-V","VMware ESX and ESXi","Red Hat Enterprise Linux","Android OS"], ans:3, explain:"本儲存系統為企業級設備，支援 Windows Server、VMware 與主流 Linux 作業系統，不支援行動裝置作業系統。" },
+  { cat:"系統架構", q:"B10200 (Switched) 系列架構中，控制器節點後方的插槽(Slot 1 與 Slot 2)主要用途為何？", opts:["連接 iSCSI 主機","連接 Fibre Channel 主機","用於擴充與後端交換器連線","作為管理埠使用"], ans:2, explain:"在 Switched 機型中，Slot 1 與 Slot 2 保留用於後端擴充與專屬交換器連線，Slot 3 與 Slot 4 則供主機介面使用。" },
+  { cat:"產品系列", q:"型號 B10140 標示的規格代表何種配置？", opts:["2-Node Switchless, 8-core","2-Node Switchless, 16-core","2-Node Switchless, 32-core","4-Node Switched, 32-core"], ans:2, explain:"在 B10100 系列中，型號尾數 40 代表搭載 32-core 處理器，為 Switchless 架構的最高運算規格。" },
+  { cat:"產品系列", q:"型號 B10230 標示的規格代表何種配置？", opts:["Switched, 8-core","Switched, 16-core","Switched, 32-core","Switchless, 16-core"], ans:1, explain:"B10200 代表 Switched 架構，尾數 30 代表搭載 16-core 處理器。" },
+  { cat:"管理控制", q:"在使用 HPE GreenLake 進行管理時，若系統具備多個節點，使用者應該監控哪個 IP？", opts:["每個節點獨立的 IP","管理用的專屬管理 IP (Management IP)","任意主機介面 IP","JBOF 的 IP"], ans:1, explain:"Alletra MP 將管理整合，提供單一的管理 IP(Management IP)，簡化多節點系統的監控與管理流程。" },
+  { cat:"效能", q:"相較於以往的硬體架構，採用新型 2、3 或 4 節點的 Alletra Storage MP B10000，效能最高可提升多少倍？", opts:["1.5 倍","2 倍","3 倍","5 倍"], ans:1, explain:"官方文件指出，多節點 Switched 架構的導入，能為系統帶來高達 2 倍的效能提升(up to 2X performance boost)。" },
+  { cat:"混合負載", q:"Alletra Storage MP B10000 支援單一架構部署多種工作負載，主要解決何種企業 IT 痛點？", opts:["網路頻寬不足","資料孤島與架構複雜性","伺服器過熱問題","作業系統授權過期"], ans:1, explain:"系統將 Block 與 File 儲存統整於單一架構，有助於消除資料孤島、降低複雜性並提升管理效率。" },
+  { cat:"應用整合", q:"若要在該平台執行意圖導向配置(Intent-based provisioning)，系統會根據什麼條件自動推薦最佳儲存系統？", opts:["機房溫度","儲存分層、工作負載類型、容量與保護策略","僅根據網路延遲","硬碟製造商"], ans:1, explain:"AI 驅動的智慧配置會根據使用者選擇的儲存分層、工作負載、容量與保護策略自動優化 SLAs。" },
+  { cat:"資料縮減", q:"系統內建的資料縮減技術(Data Reduction)主要包含哪些關鍵功能？", opts:["僅重複資料刪除","精簡配置(Thin provisioning)、重複資料刪除與壓縮(Compression)","僅壓縮","檔案加密與封存"], ans:1, explain:"資料縮減技術結合了精簡配置、重複資料刪除與壓縮等技術，以達到 4:1 的資料縮減效益。" },
+  { cat:"機架配置", q:"一套完整的 B10200 (Switched) 系統，若擴充至滿載 16 個 JBOF，大約需要多大的機架空間(不含交換器)？", opts:["16U","34U","48U","60U"], ans:1, explain:"滿載包含 Base Chassis (2U) 加上 16 個 JBOF (每個 2U)，至少需要 34U 的機架空間(不含後端交換器所需空間)。" },
+  { cat:"管理功能", q:"該儲存系統如何實現跨地端與公有雲的統一管理？", opts:["需安裝多套管理軟體","透過 Data Services Cloud Console 提供的單一雲端管理介面","無法跨雲管理","依賴第三方開源工具"], ans:1, explain:"透過 GreenLake 平台的 DSCC，管理者可以從單一雲端控制台管理並保護涵蓋地端與公有雲的工作負載。" },
+  { cat:"儲存容量", q:"B10100 (Switchless) 系列在滿配狀態下(含 Base 與擴充 JBOF)，最多可提供幾顆 NVMe SSD？", opts:["24 顆","48 顆","72 顆","96 顆"], ans:2, explain:"B10100 支援 1 個 Base 加上 2 個 JBOF，共 3 個機箱，每個機箱最大 24 顆，總計最多 72 顆 NVMe SSD。" },
+  { cat:"備份整合", q:"Alletra MP B10000 整合 HPE StoreOnce Catalyst 技術後，主要能提供什麼優勢？", opts:["降低硬體成本","無縫的虛擬機遷移","高效的資料擷取、重複資料刪除與壓縮能力","提升 FC 網路頻寬"], ans:2, explain:"結合 StoreOnce Catalyst 技術可改變資料擷取方式，提供卓越的重複資料刪除與壓縮能力，加速備份與還原流程。" },
+  { cat:"效能優化", q:"對於高讀取負載且快取不足的環境，HPE 建議的效能優化方式為何？", opts:["增加擴充櫃(JBOF)","升級控制器至更高核心數(例如 32-core)以獲取更大快取記憶體","將 NVMe 換成傳統硬碟","增加網路連接埠"], ans:1, explain:"效能通常受限於控制器核心數與快取，升級至 16-core 或 32-core 可大幅增加快取容量(至 256 GB 或 512 GB)，改善讀取效能。" },
+  { cat:"產品定位", q:"Alletra Storage MP B10000 在 HPE 儲存產品線中的主要市場定位為何？", opts:["入門級 NAS","任務關鍵型統一區塊與檔案儲存","僅限於雲端備份的虛擬設備","冷資料封存磁帶系統"], ans:1, explain:"本設備定位為提供 100% 可用性保證、針對任務關鍵型(Mission-critical)應用的高效能中高階統一儲存系統。" },
+  { cat:"架構特點", q:"何謂儲存的「Disaggregated 架構」？", opts:["將所有硬碟安裝在同一機箱內","將網路與電源整合","分離運算與儲存資源，允許獨立無中斷地擴充效能或容量","移除系統快取以降低成本"], ans:2, explain:"分離式架構打破傳統控制器與硬碟綁定的限制，讓客戶能針對特定瓶頸獨立增加節點(效能)或 JBOF(容量)。" },
+  { cat:"硬體組件", q:"在 B10000 系統的標準控制器節點(Controller Node)中，插槽(Slot)的最大數量為何？", opts:["2 個","4 個","6 個","8 個"], ans:1, explain:"無論是 B10100 或 B10200 的主流 16/32-core 節點，每節點最大插槽數均為 4 個。" },
+  { cat:"維護服務", q:"為實現儲存即服務(Storage as a Service)的體驗，HPE 推薦採用哪種消費模式方案？", opts:["HPE Foundation Care","HPE GreenLake","HPE ProLiant","HPE Aruba"], ans:1, explain:"HPE GreenLake 結合 Alletra 儲存，提供依使用量付費的雲端消費模式，並交由 AI 智慧平台簡化日常管理。" },
+  { cat:"資料保護", q:"Alletra Storage MP B10000 如何協助減少勒索軟體的損害？", opts:["安裝防毒軟體","提供實體斷網開關","架構內建網路韌性技術，進行即時威脅偵測與快速復原","使用唯讀光碟備份"], ans:2, explain:"其內建的勒索軟體防護框架整合了即時偵測、隔離與快速復原技術。" },
+  { cat:"架構設計", q:"相較於傳統堆高機式整體汰換，Alletra MP 的資料就地升級(Data-in-place upgrade)有何優點？", opts:["需要較長的停機時間","無須重新購買現有儲存空間，即可無中斷替換或增加控制器","僅能升級軟體，硬體不可動","強制將資料備份到公有雲"], ans:1, explain:"資料就地升級讓客戶在升級控制器節點時，原有的資料與硬碟陣列保持不變，實現無中斷效能提升並保護投資。" },
+  { cat:"硬碟擴充", q:"若客戶現有 B10000 系統機箱內已安裝 12 顆 NVMe SSD，欲增加容量，最少必須一次採購幾顆硬碟？", opts:["1 顆","2 顆","4 顆","8 顆"], ans:1, explain:"系統支援高顆粒度的容量擴充，最小可以 2 顆硬碟(2-drive increments)為單位進行升級。" },
+  { cat:"主機連線", q:"若客戶的儲存網路環境為 25GbE 架構，Alletra MP B10000 可提供何種連線介面支援？", opts:["僅 16Gb Fibre Channel","32Gb/s Fibre Channel","10/25GbE iSCSI","100GbE RDMA 專用"], ans:2, explain:"系統的主機介面選項包含 10/25GbE iSCSI，完美支援企業 25GbE 的乙太網路架構。" },
+  { cat:"產品系列", q:"型號 B10120 標示的規格代表何種配置？", opts:["Switchless, 8-core","Switchless, 16-core","Switched, 8-core","Switched, 32-core"], ans:0, explain:"B10100 系列代表 Switchless，尾數 20 則表示配備 8-core 處理器的基本配置。" },
+  { cat:"效能評估", q:"若一套 B10000 系統已經啟用了所有的控制器核心，但總吞吐量仍不足，應如何解決？", opts:["增加擴充櫃(JBOF)數量","更換為傳統硬碟","升級網路介面卡或增加主機連線埠","啟用省電模式"], ans:2, explain:"當 CPU 效能見頂但吞吐量受限時，增加主機介面埠或升級網路頻寬，可有效提升資料傳輸量。" },
+  { cat:"混合雲支援", q:"Alletra MP B10000 在混合雲環境下，可與下列哪項 HPE 產品緊密整合以建立聚合式基礎架構？", opts:["HPE 3PAR","HPE Private Cloud Business Edition","HPE EVA Storage","HPE StoreVirtual"], ans:1, explain:"系統不僅支援公有雲(AWS, Azure)，還能與 HPE Private Cloud Business Edition 聚合基礎架構完美整合。" },
+  { cat:"極致擴展", q:"在滿配 16 個 JBOF，且全數採用 15.36 TB NVMe SSD (共 384 顆)的配置下，系統最大全快閃容量大約可達多少？", opts:["500 TB","1.5 PB","3 PB","約 5.6 PB 到 5.9 PB"], ans:3, explain:"根據規格說明，此滿載配置最高可提供高達約 5.9 PB 的全 NVMe 容量(數值依不同單位換算約落在 5.6 PB 到 5.9 PB 之間)。" }
 ];
 
 // ── 隨機工具 ──
@@ -462,10 +464,10 @@ function showResult() {
   setTimeout(() => { ring.style.strokeDashoffset = 471 - (pct / 100) * 471; }, 100);
 
   const msgs = [
-    [90, '優秀！專業等級', `得分 ${score}/20（${pct}%）。已具備 Alletra MP B10000 Pre-sales 工程師所需的深度技術知識，包含架構原理、料號識別與規格比較能力。`],
-    [70, '良好！繼續加強', `得分 ${score}/20（${pct}%）。掌握多數核心規格，建議針對錯題再次複習 B10000 QuickSpecs（a50006985enw）的料號對應與控制器節點規格。`],
-    [50, '尚需努力',       `得分 ${score}/20（${pct}%）。建議重新研讀 HPE Alletra Storage MP B10000 QuickSpecs（a50006985enw），特別注意 B10100 vs B10200 差異及控制器節點章節。`],
-    [0,  '需要加強複習',   `得分 ${score}/20（${pct}%）。請重新閱讀完整 QuickSpecs（a50006985enw），著重架構設計、各 SKU 料號及容量擴充上限的對應關係。`],
+    [90, '優秀！專業等級', `得分 ${score}/20（${pct}%）。已具備 Alletra MP B10000 Pre-sales 工程師所需的深度技術知識，包含架構識別與規格比較能力。`],
+    [70, '良好！繼續加強', `得分 ${score}/20（${pct}%）。掌握多數核心規格，建議針對錯題再次複習 QuickSpecs 節點對應與詳細限制。`],
+    [50, '尚需努力',       `得分 ${score}/20（${pct}%）。建議重新研讀 HPE Alletra MP B10000 QuickSpecs (a50006985enw)，特別注意控制器與擴充性章節。`],
+    [0,  '需要加強複習',   `得分 ${score}/20（${pct}%）。請重新閱讀完整 QuickSpecs，著重各系列(Switchless/Switched)架構與規格對應關係。`],
   ];
   const m = msgs.find(x => pct >= x[0]);
   if (pct < 50) ring.style.stroke = '#E84A5F';
